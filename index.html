@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>CountDown</title>
+
+</head>
+<body>
+    <main class="central">
+        <img class="central-imagem-topo" src="images/top-image.svg" alt="">
+        <div class="conteudo">
+            <div class="conteudo-esquerda">
+                <p class="conteudo-titulo">Ready to launch in...</p>
+                <ul>
+                    <li class="dias">Dias</li>
+                    <li class="horas">Horas</li>
+                    <li class="minutos">Minutos</li>
+                    <li class="segundos">Segundos</li>
+                </ul>
+                <div id="conteudo-esquerda-contador"></div>
+                <p class="inscreva-se">
+                    Inscreva-se para saber mais sobre o lançamento
+                </p>
+                <p class="botao-increva-se">
+                    Inscreva-se
+                </p>
+            </div>
+            <div class="conteudo-direita">
+                <img src="images/rocket.svg" alt="">
+            </div>
+        </div>
+        <img class="central-imagem-rodape" src="images/bottom-image.svg" alt="">
+    </main>
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Jul 30, 2022 15:37:25").getTime();
+        
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+        
+          // Get today's date and time
+          var now = new Date().getTime();
+        
+          // Find the distance between now and the count down date
+          var distance = countDownDate - now;
+        
+          // Time calculations for days, hours, minutes and seconds
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          if(days<10){
+            days = "0"+ days;
+          }
+          if(hours<10){
+            hours = "0"+ hours;
+          }
+          if(minutes<10){
+            minutes = "0"+ minutes;
+          }
+          if(seconds<10){
+            seconds = "0"+ seconds;
+          }
+        
+          // Display the result in the element with id="demo"
+          document.getElementById("conteudo-esquerda-contador").innerHTML = days + " : " + hours + " : "
+          + minutes + " : " + seconds + " ";
+        
+          // If the count down is finished, write some text
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("conteudo-esquerda-contador").innerHTML = "EXPIRED";
+          }
+        }, 1000);
+        </script>
+</body>
+</html>
